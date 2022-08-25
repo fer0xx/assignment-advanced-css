@@ -1,0 +1,193 @@
+$main-background-color: #c3cfe2;
+$footer-background-color: #686de0;
+
+@import "scss/fontawesome.scss";
+@import "scss/solid.scss";
+@import "scss/brands.scss";
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Part 1 - Testimonial */
+
+body {
+  background: $main-background-color;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.testimonial {
+  margin: auto;
+  background-color: #fff;
+  max-width: 800px;
+  min-width: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 15px 6px rgba(0, 0, 0, 0.1);
+
+  > p {
+    font-size: 40px;
+    color: dimgray;
+    line-height: 60px;
+    text-align: left;
+    margin: 0;
+    padding: 80px 60px 140px 60px;
+  }
+}
+
+@import 'testimonial-footer.scss';
+
+/* Part 2 - Portfolio grid */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  max-width: 800px;
+  margin: 250px auto;
+}
+
+.button-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: black;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 0.5s ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  button {
+    position: absolute;
+    opacity: 0;
+    z-index: 3;
+    border: none;
+    background: white;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: opacity 0.5s ease;
+  }
+
+  &:hover button {
+    opacity: 1;
+  }
+
+  .grid-picture {
+    height: auto;
+    width: 100%;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover .grid-picture {
+    transform: scale(1.1);
+  }
+}
+
+@media only screen and (min-width: 401px) and (max-width: 768px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 250px;
+    grid-gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 250px;
+    grid-gap: 20px;
+  }
+}
+
+
+/* Part 3 - Social Media Buttons */
+
+.social-media-buttons {
+  position: fixed;
+  right: 0;
+  bottom: 20px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  .social-media.blog {
+    background-color: #e17b77;
+  }
+
+  .social-media.facebook {
+    background-color: #3b5998;
+  }
+
+  .social-media.twitter {
+    background-color: #00aced;
+  }
+
+  .social-media.github {
+    background-color: #333;
+  }
+
+  .social-media.linkedin {
+    background-color: #007bb6;
+  }
+
+  > a {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    color: white;
+    border: none;
+    overflow: hidden;
+    transition: width 0.5s ease;
+    line-height: 60px;
+    text-decoration: none;
+    text-align: center;
+
+    span {
+      position: absolute;
+      left: 60px;
+      top: 0;
+      width: 200px;
+      height: 60px;
+      display: block;
+      color: white;
+    }
+
+    &:hover span {
+      text-decoration: underline;
+    }
+
+    i {
+      display: block;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+    }
+
+    &:hover {
+      width: 260px;
+    }
+  }
+}
